@@ -1,16 +1,27 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customer_model extends CI_Model {
+class Customers_model extends CI_Model {
 
 
-public function _construct()
+public function __construct()
 {
 $this->load->database();
 }
 
-public function get_customers()
+public function get_customers($id=0)
 {
-$query=$this->db->get('test_customers');
+if((int)$id==0)
+{
+//id is zero show all
+$query=$this->db->get('test_Customers');
+}
+else
+{
+//else show 1 customer
+$query=$this->db->get_where('test_Customers',array('CustomerID'=>$id));
+
+}
+
 return $query->result_array();
 }
 }

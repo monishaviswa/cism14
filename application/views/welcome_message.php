@@ -70,6 +70,14 @@
 	<h1><?=$banner?></h1>
 
 	<div id="body">
+	<?php
+	
+	    foreach($query as $customer)
+        {
+               echo "<code>" . $customer['FirstName'] . "</code><br>";
+        }
+	
+	?>
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 
 		<p>If you would like to edit this page you'll find it located at:</p>
