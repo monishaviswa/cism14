@@ -13,16 +13,15 @@ public function get_customers($id=0)
 if((int)$id==0)
 {
 //id is zero show all
-$query=$this->db->get('test_Customers');
+return $this->db->get('test_Customers');
 }
 else
 {
 //else show 1 customer
-$query=$this->db->get_where('test_Customers',array('CustomerID'=>$id));
+return $this->db->get_where('test_Customers',array('CustomerID'=>$id));
 
 }
 
-return $query->result_array();
 }
 }
 
