@@ -25,6 +25,8 @@
 	echo "Sorry no such customer ";
 	
 	}
+	
+	echo anchor('customer/add','Add Customer');
 $this->load->view($this->config->item('theme') . 'footer');
 	
 ?>

@@ -36,7 +36,57 @@ class Customer extends CI_Controller {
 		$this->load->view('customer/view',$data);
 	
 	}
+
+		
+	public function add()
+	{#Will create a form for adding customers
+	
+        $this->load->helper('form');
+		$this->config->set_item('title','Add Customer');
+		$this->load->view('customer/add');#removed the data
+		
+	
+	}#end add
+	
+	
+	
+		public function insert()
+	{#Will create a form for adding customers
+	   
+        $this->load->helper('form');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('FirstName','First Name','trim|required');
+		$this->form_validation->set_rules('LastName','LastName','trim|required');
+		$this->form_validation->set_rules('Email','Email','trim|required|valid_email');
+			if($this->form_validation->run()==false)
+			{
+			//form failed go back to add
+			$this->config->set_item('title','Failed To Add Customer');
+			}
+			else
+			{
+			//insert data
+		$this->load->model('Customers_model');
+		#insert  data and returns  id of entered items
+        $id=$this->Customers_model->insert();
+		
+		#use the view to load the view of the new customer
+		
+		$data['query']=$this->Customers_model->get_customers($id);
+		feedback('Customer Added','success');
+		$this->load->view('customer/view',$data);
+	
+			}
+
+
+			
+	}#end insert
+	
 	
 	
 }
+
+
+
+
 

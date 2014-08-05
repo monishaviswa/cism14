@@ -22,7 +22,25 @@ return $this->db->get_where('test_Customers',array('CustomerID'=>$id));
 
 }
 
-}
+}#End get customers
+
+
+
+
+public function insert()
+
+{
+
+			 $data=array(
+			 'FirstName'=>$this->input->post('FirstName'),
+			 'LastName'=>$this->input->post('LastName'),
+			 'Email'=>$this->input->post('Email'),
+			 );
+		
+$this->db->insert('test_Customers',$data);		
+return $this->db->insert_id();			 
+			 
+}#End function insert
 }
 
 /* End of file welcome.php */

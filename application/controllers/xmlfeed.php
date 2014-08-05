@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Xmlfeed extends CI_Controller {
 
 
 	/**
@@ -18,28 +18,16 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index($id=0)
-	{
-		
-		$this->load->model('Customers_model');
-		$data['query']=$this->Customers_model->get_customers($id);
-		$data['title']="New Title";
-		$data['banner']="New Banner!!!!!";
-		$this->load->view('welcome_message',$data);
-	
-	}
-
-
-	public function xmlfeed()
+	public function index()
 	{
 		
 				
 	$this->load->model('Feed');
 	$data['query']=$this->Feed->get_feed();
-	$data['title']="New Title";
-	$data['banner']="New Banner!!!!!";
-	$this->load->view('welcome_message',$data);
-		
+	$data['title']="News";
+	$data['banner']="Todays Top Stories";
+	//$this->load->view('xmlfeed_view',$data);
+	$this->load->view('customer/xmlfeed_view2',$data);	
 	
 	}
 
